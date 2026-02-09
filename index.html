@@ -167,7 +167,6 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            // ကြယ်အရေအတွက်ကို ၁၂၀ သို့ လျှော့ချထားပါသည် (ရှုပ်မနေစေရန်)
             for (let i = 0; i < 120; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
@@ -214,11 +213,9 @@
                         let dx = particles[i].x - particles[j].x;
                         let dy = particles[i].y - particles[j].y;
                         let dist = Math.sqrt(dx*dx + dy*dy);
-                        
-                        // မျဉ်းအကွာအဝေး ၁၂၀ အတွင်း Gradient ဖြင့် ချိတ်ဆက်ခြင်း
                         if (dist < 120) {
                             let gradient = ctx.createLinearGradient(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
-                            let opacity = 0.3 * (1 - dist/120);
+                            let opacity = 0.5 * (1 - dist/120);
                             gradient.addColorStop(0, `rgba(0, 243, 255, ${opacity})`);
                             gradient.addColorStop(1, `rgba(255, 0, 255, ${opacity})`);
                             
@@ -246,8 +243,6 @@
             container.appendChild(star);
             setTimeout(() => star.remove(), 4000);
         }
-
-        // အဆက်မပြတ် ကြွေစေရန်
         setInterval(createShootingStar, 800);
 
         function launchVoyage() {

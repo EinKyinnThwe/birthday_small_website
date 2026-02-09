@@ -19,9 +19,9 @@
             position: fixed;
             inset: 0;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.25) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.25) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(48, 43, 99, 0.4) 0%, transparent 70%);
+                radial-gradient(circle at 15% 25%, rgba(0, 243, 255, 0.3) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(255, 0, 255, 0.3) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(48, 43, 99, 0.5) 0%, transparent 70%);
             z-index: 0;
         }
 
@@ -32,7 +32,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(10px);
             transition: all 1.5s ease;
         }
@@ -60,32 +60,31 @@
         }
 
         .portrait-frame {
-            width: 220px; height: 220px;
+            width: 180px; height: 180px;
             border-radius: 50%;
             padding: 5px;
-            background: linear-gradient(45deg, #00f3ff, #ff00ff, #00f3ff);
-            box-shadow: 0 0 60px rgba(0, 243, 255, 0.6);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            background: linear-gradient(45deg, #00f3ff, #ff00ff);
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.6);
+            margin-bottom: 1.5rem;
+            flex-shrink: 0;
         }
 
         .glass-box {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(25px);
-            padding: 3rem;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            margin-top: 2rem;
+            padding: 2.5rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
-            max-width: 550px;
+            max-width: 600px;
+            max-height: 60vh;
+            overflow-y: auto;
             box-shadow: 0 30px 80px rgba(0,0,0,0.9);
         }
 
-        /* Continuous Shooting Stars Layer */
+        .glass-box::-webkit-scrollbar { width: 5px; }
+        .glass-box::-webkit-scrollbar-thumb { background: rgba(0, 243, 255, 0.6); border-radius: 10px; }
+
         #shooting-stars-container {
             position: fixed;
             inset: 0;
@@ -144,12 +143,14 @@
             <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Aria" class="w-full h-full rounded-full object-cover bg-black" alt="Birthday Queen">
         </div>
         <div class="glass-box">
-            <h1 style="font-family: 'Cinzel';" class="text-5xl mb-6 tracking-widest text-cyan-300">To The Brightest Star</h1>
-            <p class="text-gray-100 text-lg italic font-light leading-relaxed">
-                "ကြယ်စုတန်းတွေ တစ်ခုနဲ့တစ်ခု ချိတ်ဆက်နေသလိုပဲ... <br>
-                ဒီ Universe ထဲမှာ မင်းက ငါ့အတွက်တော့ အမြဲတမ်း <br>
-                တောက်ပနေတဲ့ တစ်ပွင့်တည်းသော ကြယ်ကလေးပါ။"
-            </p>
+            <h1 style="font-family: 'Cinzel';" class="text-4xl mb-6 tracking-widest text-cyan-300">To The Brightest Star</h1>
+            <div class="text-gray-100 text-base italic font-light leading-relaxed space-y-4">
+                <p>🎂 Happy Birthday နော် သူငယ်ချင်းရေ 🎉</p>
+                <p>ဒီနေ့က မင်းအတွက် အထူးဆုံးနေ့ဆိုတော့ ပျော်ရွှင်မှုတွေ အပြည့်နဲ့ ဖြတ်သန်းနိုင်ပါစေလို့ ဆုတောင်းပါတယ်။ စိတ်ညစ်စရာတွေကို ဒီနေ့တော့ ခဏနားစေပြီး ကိတ်မုန့်နဲ့ အချိုတွေကိုပဲ အာရုံစိုက်ထားနော် 😄</p>
+                <p>မင်းလို စိတ်ကောင်းပြီး အမြဲကူညီတတ်တဲ့ သူငယ်ချင်းတစ်ယောက် ရှိလို့ ငါ့အတွက်တော့ အဖိုးမဖြတ်နိင်အောင် တန်ဖိုးရှိတယ်... အသက်တော့ တစ်နှစ်ပိုကြီးသွားပြီ 😆 ဒါပေမယ့် စိတ်ကတော့ အမြဲလူငယ်လိုပဲ နေရမယ်နော်။</p>
+                <p>အနာဂတ်မှာ အလုပ်အကိုင်အောင်မြင်၊ ပိုက်ဆံလည်း မပြတ်၊ စိတ်ချမ်းသာပြီး အိပ်ရေးလည်းဝနိုင်ပါစေ 😜 ဒီလိုပဲ အမြဲရယ်မောပြီး အားလုံးနဲ့အတူ မမောမပန်း လိုက်လံပျော်ရွှင်နိုင်တဲ့ သူငယ်ချင်းကောင်းတစ်ယောက် ဖြစ်နေပါစေနော် 💛</p>
+                <p>🎁 Happy Birthday — ဒီနေ့တော့ ကိတ်မုန့်ကို များများစား၊ စိတ်ပူစရာတွေကို မနက်ဖြန်မှ ပြန်ယူပါ 😆</p>
+            </div>
             <div class="mt-8 h-[2px] w-24 bg-gradient-to-r from-transparent via-pink-500 to-transparent mx-auto"></div>
             <p class="mt-6 text-[10px] tracking-[0.8em] text-cyan-400 font-bold uppercase">Coordinate: 02.09.2026 // B-DAY</p>
         </div>
@@ -166,14 +167,15 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            for (let i = 0; i < 180; i++) {
+            // ကြယ်အရေအတွက်ကို ၁၂၀ သို့ လျှော့ချထားပါသည် (ရှုပ်မနေစေရန်)
+            for (let i = 0; i < 120; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
                     z: Math.random() * canvas.width,
-                    vx: (Math.random() - 0.5) * 0.4,
-                    vy: (Math.random() - 0.5) * 0.4,
-                    size: Math.random() * 2
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    size: Math.random() * 1.5 + 0.5
                 });
             }
         }
@@ -181,7 +183,6 @@
         function draw() {
             ctx.fillStyle = isWarping ? "rgba(2, 2, 5, 0.2)" : "#020205";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
             const cx = canvas.width / 2;
             const cy = canvas.height / 2;
 
@@ -192,19 +193,17 @@
                     const k = 128 / p.z;
                     const px = (p.x - cx) * k + cx;
                     const py = (p.y - cy) * k + cy;
-                    const size = (1 - p.z/canvas.width) * 5;
                     ctx.beginPath();
-                    ctx.arc(px, py, size, 0, Math.PI * 2);
+                    ctx.arc(px, py, (1 - p.z/canvas.width) * 5, 0, Math.PI * 2);
                     ctx.fillStyle = "white";
                     ctx.fill();
                 } else {
-                    p.x += p.vx;
-                    p.y += p.vy;
+                    p.x += p.vx; p.y += p.vy;
                     if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                     if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+                    ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
                     ctx.fill();
                 }
             });
@@ -212,10 +211,19 @@
             if (!isWarping) {
                 for (let i = 0; i < particles.length; i++) {
                     for (let j = i + 1; j < particles.length; j++) {
-                        let dist = Math.sqrt((particles[i].x - particles[j].x)**2 + (particles[i].y - particles[j].y)**2);
-                        if (dist < 130) {
-                            ctx.strokeStyle = `rgba(0, 243, 255, ${0.15 * (1 - dist/130)})`;
-                            ctx.lineWidth = 0.6;
+                        let dx = particles[i].x - particles[j].x;
+                        let dy = particles[i].y - particles[j].y;
+                        let dist = Math.sqrt(dx*dx + dy*dy);
+                        
+                        // မျဉ်းအကွာအဝေး ၁၂၀ အတွင်း Gradient ဖြင့် ချိတ်ဆက်ခြင်း
+                        if (dist < 120) {
+                            let gradient = ctx.createLinearGradient(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+                            let opacity = 0.3 * (1 - dist/120);
+                            gradient.addColorStop(0, `rgba(0, 243, 255, ${opacity})`);
+                            gradient.addColorStop(1, `rgba(255, 0, 255, ${opacity})`);
+                            
+                            ctx.strokeStyle = gradient;
+                            ctx.lineWidth = 0.8;
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
@@ -231,8 +239,7 @@
             const container = document.getElementById('shooting-stars-container');
             const star = document.createElement('div');
             star.className = 'shooting-star';
-            const duration = (Math.random() * 2 + 2) + 's';
-            star.style.setProperty('--duration', duration);
+            star.style.setProperty('--duration', (Math.random() * 2 + 2) + 's');
             star.style.width = (Math.random() * 200 + 150) + 'px';
             star.style.left = (Math.random() * 120 + 20) + 'vw';
             star.style.top = (Math.random() * 50 - 10) + 'vh';
@@ -240,7 +247,7 @@
             setTimeout(() => star.remove(), 4000);
         }
 
-        // ကြယ်အဆက်မပြတ် ကြွေစေရန်
+        // အဆက်မပြတ် ကြွေစေရန်
         setInterval(createShootingStar, 800);
 
         function launchVoyage() {
@@ -260,8 +267,7 @@
         }
 
         window.addEventListener('resize', init);
-        init();
-        draw();
+        init(); draw();
     </script>
 </body>
 </html>

@@ -3,30 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celestial Secret | 2026</title>
+    <title>The Eternal Star | 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Quicksand:wght@300;600&display=swap" rel="stylesheet">
     <style>
         body, html { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
-            background: #050505; 
+            background: #020205; 
             color: white; overflow: hidden; font-family: 'Quicksand', sans-serif;
         }
 
         canvas { position: fixed; top: 0; left: 0; z-index: 1; }
 
-        /* Glowing Nebula Background */
         .nebula-bg {
             position: fixed;
             inset: 0;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 243, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(48, 43, 99, 0.2) 0%, transparent 60%);
+                radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(48, 43, 99, 0.4) 0%, transparent 70%);
             z-index: 0;
         }
 
-        /* Initial Button Overlay */
         #gatekeeper {
             position: fixed;
             inset: 0;
@@ -34,12 +32,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
             transition: all 1.5s ease;
         }
 
-        /* The Main Content (Hidden Initially) */
         #main-content {
             position: relative;
             z-index: 10;
@@ -49,23 +46,25 @@
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transform: scale(0.8) translateY(50px);
-            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: scale(5) rotate(10deg);
+            filter: blur(30px);
+            transition: all 2.5s cubic-bezier(0.19, 1, 0.22, 1);
             pointer-events: none;
         }
 
         #main-content.active {
             opacity: 1;
-            transform: scale(1) translateY(0);
+            transform: scale(1) rotate(0deg);
+            filter: blur(0px);
             pointer-events: auto;
         }
 
         .portrait-frame {
-            width: 200px; height: 200px;
+            width: 220px; height: 220px;
             border-radius: 50%;
-            padding: 4px;
-            background: linear-gradient(45deg, #00f3ff, #ff00ff);
-            box-shadow: 0 0 40px rgba(0, 243, 255, 0.4);
+            padding: 5px;
+            background: linear-gradient(45deg, #00f3ff, #ff00ff, #00f3ff);
+            box-shadow: 0 0 60px rgba(0, 243, 255, 0.6);
             animation: float 6s ease-in-out infinite;
         }
 
@@ -74,48 +73,53 @@
             50% { transform: translateY(-20px); }
         }
 
-        .cinzel { font-family: 'Cinzel', serif; }
+        .glass-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px);
+            padding: 3rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-top: 2rem;
+            text-align: center;
+            max-width: 550px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+        }
 
-        /* Shooting Star Effect */
+        /* Continuous Shooting Stars Layer */
+        #shooting-stars-container {
+            position: fixed;
+            inset: 0;
+            z-index: 5;
+            pointer-events: none;
+        }
+
         .shooting-star {
             position: absolute;
             height: 2px;
             background: linear-gradient(90deg, #fff, transparent);
             opacity: 0;
-            z-index: 5;
-            animation: shoot 4s linear infinite;
+            animation: shoot var(--duration) linear infinite;
         }
 
         @keyframes shoot {
-            0% { transform: translate(0,0) rotate(-45deg) scaleX(0); opacity: 0; }
+            0% { transform: translate(0, 0) rotate(-45deg) scaleX(0); opacity: 0; }
             10% { opacity: 1; transform: scaleX(1); }
-            40% { transform: translate(-800px, 800px) rotate(-45deg) scaleX(1); opacity: 0; }
+            50% { transform: translate(-1000px, 1000px) rotate(-45deg) scaleX(1.5); opacity: 0; }
+            100% { opacity: 0; }
         }
 
-        .glass-text {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            padding: 2rem;
-            border-radius: 35px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 2rem;
-            text-align: center;
-            max-width: 500px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        /* Explore Button Styling */
         .explore-btn {
-            padding: 15px 40px;
-            border: 1px solid #00f3ff;
+            padding: 18px 50px;
+            border: 2px solid #00f3ff;
             color: #00f3ff;
             background: transparent;
             font-weight: 800;
-            letter-spacing: 5px;
+            letter-spacing: 8px;
             border-radius: 100px;
             cursor: pointer;
             transition: 0.5s;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+            text-transform: uppercase;
+            font-size: 12px;
         }
         .explore-btn:hover {
             background: #00f3ff;
@@ -128,43 +132,45 @@
 <body>
 
     <div class="nebula-bg"></div>
-    <canvas id="galaxy"></canvas>
+    <div id="shooting-stars-container"></div>
+    <canvas id="galaxyCanvas"></canvas>
 
     <div id="gatekeeper">
-        <button onclick="revealSecret()" class="explore-btn uppercase text-[10px]">Explore the Galaxy</button>
+        <button onclick="launchVoyage()" class="explore-btn italic">Initiate Hyperjump</button>
     </div>
 
     <main id="main-content">
         <div class="portrait-frame">
-            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Aria" class="w-full h-full rounded-full object-cover bg-black" alt="Birthday Star">
+            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Aria" class="w-full h-full rounded-full object-cover bg-black" alt="Birthday Queen">
         </div>
-
-        <div class="glass-text">
-            <h1 class="cinzel text-4xl mb-4 tracking-widest text-cyan-300">Celestial Birthday</h1>
-            <p class="text-gray-300 italic font-light leading-relaxed">
-                "ဒီညရဲ့ ကြယ်စုတန်းတွေကြားမှာ မင်းက အတောက်ပဆုံးပဲ။ <br>
-                Universe ရဲ့ လျှို့ဝှက်ချက်တွေထက် <br>
-                မင်းရဲ့ အပြုံးက ငါ့အတွက်တော့ ပိုပြီး တန်ဖိုးရှိပါတယ်။"
+        <div class="glass-box">
+            <h1 style="font-family: 'Cinzel';" class="text-5xl mb-6 tracking-widest text-cyan-300">To The Brightest Star</h1>
+            <p class="text-gray-100 text-lg italic font-light leading-relaxed">
+                "ကြယ်စုတန်းတွေ တစ်ခုနဲ့တစ်ခု ချိတ်ဆက်နေသလိုပဲ... <br>
+                ဒီ Universe ထဲမှာ မင်းက ငါ့အတွက်တော့ အမြဲတမ်း <br>
+                တောက်ပနေတဲ့ တစ်ပွင့်တည်းသော ကြယ်ကလေးပါ။"
             </p>
-            <p class="mt-6 text-[9px] tracking-[0.7em] text-pink-400 font-bold uppercase">Level Up // 02-09-2026</p>
+            <div class="mt-8 h-[2px] w-24 bg-gradient-to-r from-transparent via-pink-500 to-transparent mx-auto"></div>
+            <p class="mt-6 text-[10px] tracking-[0.8em] text-cyan-400 font-bold uppercase">Coordinate: 02.09.2026 // B-DAY</p>
         </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
-        const canvas = document.getElementById('galaxy');
+        const canvas = document.getElementById('galaxyCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+        let isWarping = false;
 
         function init() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            let count = (canvas.width * canvas.height) / 10000;
-            for (let i = 0; i < count; i++) {
+            for (let i = 0; i < 180; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
+                    z: Math.random() * canvas.width,
                     vx: (Math.random() - 0.5) * 0.4,
                     vy: (Math.random() - 0.5) * 0.4,
                     size: Math.random() * 2
@@ -173,59 +179,85 @@
         }
 
         function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = isWarping ? "rgba(2, 2, 5, 0.2)" : "#020205";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+
             particles.forEach(p => {
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = "rgba(255, 255, 255, 0.8)"; ctx.fill();
+                if (isWarping) {
+                    p.z -= 50; 
+                    if (p.z <= 0) p.z = canvas.width;
+                    const k = 128 / p.z;
+                    const px = (p.x - cx) * k + cx;
+                    const py = (p.y - cy) * k + cy;
+                    const size = (1 - p.z/canvas.width) * 5;
+                    ctx.beginPath();
+                    ctx.arc(px, py, size, 0, Math.PI * 2);
+                    ctx.fillStyle = "white";
+                    ctx.fill();
+                } else {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+                    ctx.fill();
+                }
             });
 
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    let dx = particles[i].x - particles[j].x;
-                    let dy = particles[i].y - particles[j].y;
-                    let dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 150) {
-                        ctx.strokeStyle = `rgba(0, 243, 255, ${0.2 * (1 - dist / 150)})`;
-                        ctx.lineWidth = 0.8; ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
+            if (!isWarping) {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        let dist = Math.sqrt((particles[i].x - particles[j].x)**2 + (particles[i].y - particles[j].y)**2);
+                        if (dist < 130) {
+                            ctx.strokeStyle = `rgba(0, 243, 255, ${0.15 * (1 - dist/130)})`;
+                            ctx.lineWidth = 0.6;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
                     }
                 }
             }
             requestAnimationFrame(draw);
         }
 
-        function revealSecret() {
-            // Hide gatekeeper
+        function createShootingStar() {
+            const container = document.getElementById('shooting-stars-container');
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            const duration = (Math.random() * 2 + 2) + 's';
+            star.style.setProperty('--duration', duration);
+            star.style.width = (Math.random() * 200 + 150) + 'px';
+            star.style.left = (Math.random() * 120 + 20) + 'vw';
+            star.style.top = (Math.random() * 50 - 10) + 'vh';
+            container.appendChild(star);
+            setTimeout(() => star.remove(), 4000);
+        }
+
+        // ကြယ်အဆက်မပြတ် ကြွေစေရန်
+        setInterval(createShootingStar, 800);
+
+        function launchVoyage() {
+            isWarping = true;
             document.getElementById('gatekeeper').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('gatekeeper').style.display = 'none';
-                // Show content
+                isWarping = false;
                 document.getElementById('main-content').classList.add('active');
-                
-                // Trigger celebratory confetti
                 confetti({
-                    particleCount: 150,
-                    spread: 70,
+                    particleCount: 200,
+                    spread: 80,
                     origin: { y: 0.6 },
                     colors: ['#00f3ff', '#ff00ff', '#ffffff']
                 });
-            }, 1000);
+            }, 1800);
         }
-
-        // Shooting Stars
-        setInterval(() => {
-            const ss = document.createElement('div');
-            ss.className = 'shooting-star';
-            ss.style.width = (Math.random() * 200 + 100) + 'px';
-            ss.style.left = (Math.random() * 100) + 'vw';
-            ss.style.top = (Math.random() * 40) + 'vh';
-            document.body.appendChild(ss);
-            setTimeout(() => ss.remove(), 4000);
-        }, 3000);
 
         window.addEventListener('resize', init);
         init();
